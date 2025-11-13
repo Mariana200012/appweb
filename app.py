@@ -42,6 +42,9 @@ def json_error(message: str, status: int = 400, detail: str | None = None):
     response.status_code = status
     return response
 
+with app.app_context():
+    db.create_all()
+
 #Ruta raiz
 @app.route('/')
 def index():
